@@ -35,7 +35,7 @@ pop up a text box with the public key. Paste that into keycloak_example.py.
 Run the script - ```env/bin/python keycloak_example.py```. This should print out the verified token.
 
 
-### Using authorization in a Python microservice that uses Flask and Flask-Restplus.
+### Using authentication in a Python microservice that uses Flask and Flask-Restplus.
 
 The example app in this directory, uses the Flask extension, Flask JWT Simple (https://github.com/vimalloc/flask-jwt-simple).
 It is a sister extension of flask-jwt-extended. It provides barebones support for working with JWT's which is what we need.
@@ -57,6 +57,7 @@ JWT token inserted.
 
 
 Questions/issues that remain:
+1. Need to figure out how to do authorization. I don't think this is critical as I think the gateway will be handling that.
 1. Do we want to be able configure which endpoints need authorization? Do we want the same level of configurablity as
 the springboot microservices.
 2. Implementation - how to make it easy to add this to all of our python applications. May want to consider some sort
