@@ -59,8 +59,5 @@ JWT token inserted.
 Questions/issues that remain:
 1. Need to figure out how to do authorization. I don't think this is critical as I think the gateway will be handling that.
 1. Do we want to be able configure which endpoints need authorization? Do we want the same level of configurablity as
-the springboot microservices.
-2. Implementation - how to make it easy to add this to all of our python applications. May want to consider some sort
-of python module/package that can be imported into all applications. Alternatively, see what may be available as a Flask add-on
-or plugin.
+the springboot microservices?
 3. Can we use the above setup to easily test locally ... especially when testing microservices in isolation?
