@@ -48,7 +48,7 @@ as an environment variable that gets put in the app.config object.
 This POC has a single endpoint, '/endpoint', which requires jwt authentication. In config.py we are setting, JWT_ALGORITHM, 
 JWT_PUBLIC_KEY, and JWT_DECODE_AUDIENCE. If you try to run the application, you will need to provide your JWT_PUBLIC_KEY 
 in .env file or in an environment variable. JWT_DECODE_AUDIENCE can also be modified to something other than 
-'security-admin-role' in the same way.
+'security-admin-console' in the same way.
 
 See services.py for how to use the extension to require jwt authorization.
 
@@ -57,7 +57,13 @@ JWT token inserted.
 
 
 Questions/issues that remain:
-1. Need to figure out how to do authorization. I don't think this is critical as I think the gateway will be handling that.
-1. Do we want to be able configure which endpoints need authorization? Do we want the same level of configurablity as
-the springboot microservices?
-3. Can we use the above setup to easily test locally ... especially when testing microservices in isolation?
+1. Need to figure out how to do authorization against a role. If we are using keycloak that information will come in the token
+in the realm_access property. For example:
+```
+'realm_access': {
+		'roles': ['manager', 'uma_authorization']
+	},
+```
+1. Need to come up with a way to easily run the microservices without a keycloak instance. This should include a
+configuration variable that allows us to turn off authentication. Potential solution: If authorization is turned off,
+create a token locally using a secret_key that is generated using uuid.
